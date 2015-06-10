@@ -1,0 +1,6 @@
+dependencies {
+	compile project(":model")
+	
+	compile 'com.sparkjava:spark-core:2.2'
+	compile 'com.google.code.gson:gson:2.3.1'
+}
