@@ -38,6 +38,7 @@ public class RestAdapter {
 		final GsonBuilder builder = new GsonBuilder().registerTypeAdapter(Application.class, new ApplicationSerializer());
 		final Gson gson = builder.create();
 		get("list", (req, res) -> {
+			res.type("application/json");
 			return this.applicationsState.listApplications();
 		}, gson::toJson);
 	}
