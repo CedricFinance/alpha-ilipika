@@ -3,7 +3,7 @@ package fr.soat.cap.alpha.ilipika.cliterm;
 import fr.soat.cap.alpha.ilipika.model.ApplicationRepository;
 import fr.soat.cap.alpha.ilipika.model.ApplicationsState;
 
-public class Main {
+public class GraphvizMain {
 
 	public static void main(String[] args) {
 		// Dépendances du modèle
@@ -13,10 +13,9 @@ public class Main {
 		final ApplicationsState applicationsState = new ApplicationsState(applicationRepository);
 
 		// Adapter
-		final CommandLineAdapter adapter = new CommandLineAdapter(applicationsState, System.out);
+		final GraphvizAdapter adapter = new GraphvizAdapter(applicationsState, System.out);
 
 		// run
 		adapter.adapt(args);
 	}
-
 }
