@@ -25,12 +25,17 @@ Polymer({
 		},
 		width: {
 			type: String,
-			value: "100%"
+			observer: "optionsChanged"
 		},
 		height: {
 			type: String,
-			value: "100%"
+			observer: "optionsChanged"
 		}
+	},
+	optionsChanged: function() {
+	  if (this.network) {
+	    this.network.setOptions(this.getOptions());
+      }
 	},
 	appsChanged: function(newValues) { this.showGraph(newValues); },
 	showGraph: function(data) {
@@ -62,11 +67,14 @@ Polymer({
 			nodes : nodes,
 			edges : edges
 		};
-		var options = {
-		  width: this.width,
-		  height: this.height
-		};
-		var network = new vis.Network(container, data, options);
+		
+		this.network = new vis.Network(container, data, this.getOptions());
+	},
+	getOptions: function() {
+	  var options = {};
+	  if (this.width) { options.width = this.width;	}
+	  if (this.height) { options.height = this.height; }
+      return options;
 	}
 })
 </script>

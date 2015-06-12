@@ -10,9 +10,12 @@
 
 <body>
   <template is="dom-bind">
+    <input type="range" min="200" max="500" value="{{width::input}}"></input>
+    <input type="range" min="200" max="500" value="{{height::input}}"></input>
     <iron-ajax auto url="/list" handle-as="json" last-response="{{apps}}"></iron-ajax>
-    <application-graph width="400px" height="200px" apps="{{apps}}"></application-graph>
+    <application-graph width="{{width}}" height="{{height}}" apps="{{apps}}"></application-graph>
     <application-graph width="800px" height="400px" apps="{{apps}}"></application-graph>
+    <application-graph apps="{{apps}}"></application-graph>
   </template>
 </body>
 </html>
