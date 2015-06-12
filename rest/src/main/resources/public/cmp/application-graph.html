@@ -1,0 +1,72 @@
+<link rel="import" href="/lib/polymer/polymer.html">
+
+<script type="text/javascript" src="/js/vis.min.js"></script>
+<link href="/css/vis.min.css" rel="stylesheet" type="text/css" />
+
+
+<dom-module id="application-graph">
+	<template>
+		<div id="graph"></div>
+	</template>
+  <style>
+    #graph {
+      display: inline-block
+    }
+  </style>
+</dom-module>
+
+<script>
+Polymer({
+	is: 'application-graph',
+	properties:{
+		apps:{
+			type: Array,
+			observer: 'appsChanged'
+		},
+		width: {
+			type: String,
+			value: "100%"
+		},
+		height: {
+			type: String,
+			value: "100%"
+		}
+	},
+	appsChanged: function(newValues) { this.showGraph(newValues); },
+	showGraph: function(data) {
+		// create an array with nodes
+		var nodesData = [];
+		var nodesNamesIdMap = {};
+		data.forEach(function(app, index) {
+			nodesData.push({ id: index+1, label: app.name });
+			nodesNamesIdMap[app.name] = index + 1;
+		})
+		var nodes = new vis.DataSet(nodesData);
+
+		// create an array with edges
+		var edgesData = [];
+		data.forEach(function(app, index) {
+			app.dependencies.forEach(function(dependency){
+				edgesData.push({
+					from: index + 1,
+					to: nodesNamesIdMap[dependency],
+					arrows: 'to'
+				});
+			})
+		});
+		var edges = new vis.DataSet(edgesData);
+
+		// create a network
+		var container = this.$.graph;
+		var data = {
+			nodes : nodes,
+			edges : edges
+		};
+		var options = {
+		  width: this.width,
+		  height: this.height
+		};
+		var network = new vis.Network(container, data, options);
+	}
+})
+</script>

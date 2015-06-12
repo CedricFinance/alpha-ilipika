@@ -1,0 +1,23 @@
+{
+  "name": "Ilipika",
+  "version": "0.0.0",
+  "homepage": "https://github.com/CedricFinance/alpha-ilipika",
+  "authors": [
+    "xeter <mbriend@gmail.com>"
+  ],
+  "description": "web",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "GPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0"
+  }
+}
