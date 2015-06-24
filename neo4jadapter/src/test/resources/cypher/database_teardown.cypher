@@ -1,0 +1,1 @@
+match(n)-[r]->(m) delete n,m,r;

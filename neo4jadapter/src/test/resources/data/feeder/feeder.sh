@@ -1,0 +1,1 @@
+/neo4j-import --into aaaaaa.db --nodes:id:name"/home/pacman/dev/projets/alpha-ilipika/neo4jadapter/src/test/resources/data/feeder/applications.csv" --relationships "/home/pacman/dev/projets/alpha-ilipika/neo4jadapter/src/test/resources/data/feeder/connected_to.csv"
