@@ -2,4 +2,5 @@ dependencies {
 	compile project(":model")
 	
 	compile 'com.google.code.gson:gson:2.3.1'
+	compile 'org.glassfish.jersey.core:jersey-client:2.18'
 }
